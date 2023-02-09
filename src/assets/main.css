@@ -66,8 +66,9 @@ h1 {
     margin-top: 5px;
 }
 
-input {
+input, select {
     display: block;
+    margin: .5rem auto;
     border: 1px solid #1DA1F2;
     width: 480px;
     box-sizing: border-box;

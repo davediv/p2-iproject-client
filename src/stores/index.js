@@ -78,7 +78,7 @@ export const useSosmedStore = defineStore('sosmed', {
     },
 
 
-    // TWITTER - TWEET GENERATOR
+    // TWITTER - TWEET GENERATOR - DONE
     async postTwitterTweet(keyword) {
 
       try {
@@ -168,14 +168,14 @@ export const useSosmedStore = defineStore('sosmed', {
     },
 
     // TWITTER - BIO GENERATOR
-    async postTwitterBio(keyword) {
+    async postTwitterBio(name, job, vibe) {
 
       try {
 
         const { data } = await axios({
           url: baseUrl + '/twitter-bio',
           method: 'POST',
-          data: { keyword },
+          data: { name, job, vibe },
         });
 
         this.result = data.result;
@@ -256,21 +256,21 @@ export const useSosmedStore = defineStore('sosmed', {
 
 
     // USERNAME CHECKER
-    async postUsernameChecker(keyword) {
+    async postUsernameChecker(username) {
 
       try {
 
         const { data } = await axios({
           url: baseUrl + '/username-checker',
           method: 'POST',
-          data: { keyword },
+          data: { username },
         });
 
         this.result = data.result;
 
         Swal.fire(
           'Berhasil!',
-          'Tweet berhasil digenerate!',
+          'Berhasil!',
           'success'
         )
 

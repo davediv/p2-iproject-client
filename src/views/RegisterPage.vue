@@ -38,8 +38,8 @@ export default {
         <div class="mx-auto flex max-w-7xl items-center justify-center py-6 px-6">
             <div class="flex">
               <RouterLink to="/">
-                    <span class="sr-only">SosialAi</span>
-                    <img class="h-8 w-auto sm:h-10" src="../assets/logo-SosialAi.png" alt="SosialAi">
+                    <!-- <span class="sr-only">SosialAi</span> -->
+                    <!-- <img class="h-8 w-auto sm:h-10" src="../assets/TweetAi.png" alt="SosialAi"> -->
               </RouterLink>
             </div>
         </div>
