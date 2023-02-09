@@ -68,13 +68,13 @@ export default {
             <div class="flex items-center justify-between">
               <div class="text-sm">
                 <RouterLink to="/register">
-                  <span class="font-medium text-amber-600 hover:text-amber-500">Don't have an account? Register</span>
+                  <span class="font-medium text-[#1DA1F2]">Don't have an account? Register</span>
                 </RouterLink>
               </div>
             </div>
     
             <div>
-              <button type="submit" class="flex w-full justify-center border border-transparent bg-amber-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2">Sign in</button>
+              <button type="submit" class="flex w-full justify-center border border-transparent bg-[#1DA1F2] py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2">Sign in</button>
             </div>
           </form>
     

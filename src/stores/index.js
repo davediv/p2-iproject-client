@@ -255,7 +255,6 @@ export const useSosmedStore = defineStore('sosmed', {
     },
 
 
-
     // USERNAME CHECKER
     async postUsernameChecker(keyword) {
 
@@ -344,7 +343,7 @@ export const useSosmedStore = defineStore('sosmed', {
     },
 
     // DALL-E - Text2Image
-    async postTwitterTweet(keyword) {
+    async postDallE(keyword) {
 
       try {
 
@@ -371,11 +370,6 @@ export const useSosmedStore = defineStore('sosmed', {
         )
       }
     },
-
-
-    // 
-
-
 
   },
 });

@@ -1,7 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
-
+@tailwind utilities; */
 
 /* RESET */
 body {
@@ -19,6 +18,10 @@ body {
     padding: 1rem;
     max-width: 720px;
     margin-bottom: 150px;
+}
+
+h1, h2, h3 {
+    text-align: center;
 }
 
 header {
@@ -64,6 +67,7 @@ h1 {
 }
 
 input {
+    display: block;
     border: 1px solid #1DA1F2;
     width: 480px;
     box-sizing: border-box;
@@ -71,16 +75,16 @@ input {
     border-radius: 5px;
 }
 
-/* button {
+button {
     margin-top: 8px;
     background: #1DA1F2;
-    max-width: 480px;
+    width: 480px;
     padding: 15px 0;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-} */
+}
 
 .logo {
     max-width: 240px;
@@ -88,6 +92,7 @@ input {
     text-align: center;
     display: block;
     margin: auto;
+    padding: 1rem;
 }
 
 
