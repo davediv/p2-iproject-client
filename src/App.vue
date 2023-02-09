@@ -5,9 +5,12 @@ import { RouterLink, RouterView } from 'vue-router';
 </script>
 
 <template>
-  <header>TweetAi
+  <header>TweetAi</header>
 
-      <!-- <nav>
+  <RouterView />
+
+  <footer>
+    <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/login">Twitter</RouterLink>
         <RouterLink to="/register">Twitter</RouterLink>
@@ -22,9 +25,6 @@ import { RouterLink, RouterView } from 'vue-router';
         <RouterLink to="/down-checker">Down Checker</RouterLink>
         <RouterLink to="/twitter/trends">Twitter Trends</RouterLink>
         <RouterLink to="/text-to-art">DallE</RouterLink>
-      </nav> -->
-
-  </header>
-
-  <RouterView />
+      </nav>
+  </footer>
 </template>

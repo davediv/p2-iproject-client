@@ -27,10 +27,10 @@ export default {
 
 <template>
     <div class="logo"><img class="logo" src="../assets/TweetAi.png" alt="TweetAi"></div>
-    <h1>Twitter Tweet Generator</h1>
+    <h1>Username Checker</h1>
             <div class="form-wrap">
                 <form @submit.prevent="submitForm">
-                    <input v-model="keyword" type="text" id="keyword" name="keyword" placeholder="Masukan topik tweet">
+                    <input v-model="keyword" type="text" id="keyword" name="keyword" placeholder="Masukan username">
                     <button type="submit">GENERATE</button>
                 </form>
             </div>
