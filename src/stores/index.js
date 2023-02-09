@@ -1,17 +1,47 @@
 import { defineStore } from 'pinia';
-// import { useToast } from 'vue-toastification';
 import axios from 'axios';
-
-// const toast = useToast();
+import Swal from 'sweetalert2'
 
 const baseUrl = 'http://localhost:3000';
 
 export const useSosmedStore = defineStore('sosmed', {
   state: () => ({
-    courses: [],
-    myCourses: [],
+    keyword: '',
+    result: '',
   }),
   actions: {
+
+    // REGISTER - DONE
+    async register({ name, email, password }) {
+
+      try {
+        let isPremium = false
+
+        let { data } = await axios({
+          url: baseUrl + '/register',
+          method: 'POST',
+          data: { name, email, password, isPremium}
+        })
+
+        // SET PAGE TO LOGIN
+        this.router.push('/login')
+        Swal.fire(
+          'Good job!',
+          'You clicked the button!',
+          'success'
+        )
+
+      } catch (err) {
+        Swal.fire(
+          'Error!',
+          `${err}`,
+          'error'
+        )
+      }
+
+    },
+
+    // LOGIN - DONE
     async login({ email, password }) {
       try {
         const { data } = await axios({
@@ -19,81 +49,333 @@ export const useSosmedStore = defineStore('sosmed', {
           method: 'POST',
           data: { email, password },
         });
-        toast.info('Success Login');
 
+        Swal.fire(
+          'Selamat datang!!',
+          'Hore!',
+          'success'
+        )
         localStorage.setItem('access_token', data.access_token);
-        this.router.push({ name: 'homePage' });
+        this.router.push('/twitter');
       } catch (err) {
-        toast.error(err.response.data.message);
+        Swal.fire(
+          'Error!',
+          'Something is wrong!',
+          'error'
+        )
       }
     },
+
+    // LOGOUT - DONE
     logout() {
       localStorage.clear();
-      this.router.replace({ name: 'loginPage' });
+      this.router.replace('/');
+      Swal.fire(
+        'Logout Success!',
+        '',
+        'success'
+      )
     },
-    async fetchCourses() {
-      try {
-        const { data } = await axios({
-          url: baseUrl + '/courses',
-          method: 'GET',
-          headers: {
-            access_token: localStorage.getItem('access_token'),
-          },
-        });
 
-        this.courses = data;
-      } catch (err) {
-        toast.error('ERROR FETCH COURSES');
-      }
-    },
-    async fetchMyCourses() {
-      try {
-        const { data } = await axios({
-          url: baseUrl + '/mycourses',
-          method: 'GET',
-          headers: {
-            access_token: localStorage.getItem('access_token'),
-          },
-        });
 
-        this.myCourses = data;
-      } catch (err) {
-        toast.error('ERROR FETCH MY COURSES');
-      }
-    },
-    async completeCourse(id) {
-      try {
-        const { data } = await axios({
-          url: baseUrl + `/mycourses/id`,
-          method: 'PATCH',
-          headers: {
-            access_token: localStorage.getItem('access_token'),
-          },
-        });
+    // TWITTER - TWEET GENERATOR
+    async postTwitterTweet(keyword) {
 
-        await this.fetchMyCourses();
-        toast.success(data.message);
-      } catch (err) {
-        toast.error(err.data.response.message);
-      }
-    },
-    async enrollCourse(id) {
       try {
+
         const { data } = await axios({
-          url: baseUrl + `/mycourses/id`,
+          url: baseUrl + '/twitter-tweet',
           method: 'POST',
-          headers: {
-            access_token: localStorage.getItem('access_token'),
-          },
+          data: { keyword },
         });
 
-        await this.fetchMyCourses();
+        this.result = data.result;
 
-        toast.success('Course enrolled!');
-        this.router.push({ name: 'coursePage' });
+        Swal.fire(
+          'Berhasil!',
+          'Tweet berhasil digenerate!',
+          'success'
+        )
+
       } catch (err) {
-        toast.error(err.response.data.message);
+        console.log(err);
+        Swal.fire(
+          'Ups! Error!',
+          `Coba beberapa saat lagi`,
+          'error'
+        )
       }
     },
+
+
+    // TWITTER - HASHTAG GENERATOR
+    async postTwitterHashtag(keyword) {
+
+      try {
+
+        const { data } = await axios({
+          url: baseUrl + '/twitter-hashtag',
+          method: 'POST',
+          data: { keyword },
+        });
+
+        this.result = data.result;
+
+        Swal.fire(
+          'Berhasil!',
+          'Hashtag berhasil digenerate!',
+          'success'
+        )
+
+      } catch (err) {
+        console.log(err);
+        Swal.fire(
+          'Ups! Error!',
+          `Coba beberapa saat lagi`,
+          'error'
+        )
+      }
+    },
+
+
+    // TWITTER - QUOTE GENERATOR
+    async postTwitterQuote(keyword) {
+
+      try {
+
+        const { data } = await axios({
+          url: baseUrl + '/twitter-quote',
+          method: 'POST',
+          data: { keyword },
+        });
+
+        this.result = data.result;
+
+        Swal.fire(
+          'Berhasil!',
+          'Quote berhasil digenerate!',
+          'success'
+        )
+
+      } catch (err) {
+        console.log(err);
+        Swal.fire(
+          'Ups! Error!',
+          `Coba beberapa saat lagi`,
+          'error'
+        )
+      }
+    },
+
+    // TWITTER - BIO GENERATOR
+    async postTwitterBio(keyword) {
+
+      try {
+
+        const { data } = await axios({
+          url: baseUrl + '/twitter-bio',
+          method: 'POST',
+          data: { keyword },
+        });
+
+        this.result = data.result;
+
+        Swal.fire(
+          'Berhasil!',
+          'Bio berhasil digenerate!',
+          'success'
+        )
+
+      } catch (err) {
+        console.log(err);
+        Swal.fire(
+          'Ups! Error!',
+          `Coba beberapa saat lagi`,
+          'error'
+        )
+      }
+    },
+
+    // TWITTER - FACT GENERATOR
+    async postTwitterFact(keyword) {
+
+      try {
+
+        const { data } = await axios({
+          url: baseUrl + '/twitter-fact',
+          method: 'POST',
+          data: { keyword },
+        });
+
+        this.result = data.result;
+
+        Swal.fire(
+          'Berhasil!',
+          'Fun Fact berhasil digenerate!',
+          'success'
+        )
+
+      } catch (err) {
+        console.log(err);
+        Swal.fire(
+          'Ups! Error!',
+          `Coba beberapa saat lagi`,
+          'error'
+        )
+      }
+    },
+
+    // TWITTER - ENGAGE QUESTIONS GENERATOR
+    async postTwitterEngage(keyword) {
+
+      try {
+
+        const { data } = await axios({
+          url: baseUrl + '/twitter-engage',
+          method: 'POST',
+          data: { keyword },
+        });
+
+        this.result = data.result;
+
+        Swal.fire(
+          'Berhasil!',
+          'Engage questions berhasil digenerate!',
+          'success'
+        )
+
+      } catch (err) {
+        console.log(err);
+        Swal.fire(
+          'Ups! Error!',
+          `Coba beberapa saat lagi`,
+          'error'
+        )
+      }
+    },
+
+
+
+    // USERNAME CHECKER
+    async postUsernameChecker(keyword) {
+
+      try {
+
+        const { data } = await axios({
+          url: baseUrl + '/username-checker',
+          method: 'POST',
+          data: { keyword },
+        });
+
+        this.result = data.result;
+
+        Swal.fire(
+          'Berhasil!',
+          'Tweet berhasil digenerate!',
+          'success'
+        )
+
+      } catch (err) {
+        console.log(err);
+        Swal.fire(
+          'Ups! Error!',
+          `Coba beberapa saat lagi`,
+          'error'
+        )
+      }
+    },
+
+    // TWITTER - DOWN CHECKER
+    async postDownChecker(keyword) {
+
+      try {
+
+        const { data } = await axios({
+          url: baseUrl + '/down-checker',
+          method: 'POST',
+          data: { keyword },
+        });
+
+        this.result = data.result;
+
+        Swal.fire(
+          'Berhasil!',
+          'Tweet berhasil digenerate!',
+          'success'
+        )
+
+      } catch (err) {
+        console.log(err);
+        Swal.fire(
+          'Ups! Error!',
+          `Coba beberapa saat lagi`,
+          'error'
+        )
+      }
+    },
+
+    // TWITTER - TRENDS
+    async postTwitterTrends(keyword) {
+
+      try {
+
+        const { data } = await axios({
+          url: baseUrl + '/twitter-trends',
+          method: 'GET',
+          data: { keyword },
+        });
+
+        this.result = data.result;
+
+        Swal.fire(
+          'Berhasil!',
+          'Tweet berhasil digenerate!',
+          'success'
+        )
+
+      } catch (err) {
+        console.log(err);
+        Swal.fire(
+          'Ups! Error!',
+          `Coba beberapa saat lagi`,
+          'error'
+        )
+      }
+    },
+
+    // DALL-E - Text2Image
+    async postTwitterTweet(keyword) {
+
+      try {
+
+        const { data } = await axios({
+          url: baseUrl + '/image-dalle',
+          method: 'POST',
+          data: { keyword },
+        });
+
+        this.result = data.result;
+
+        Swal.fire(
+          'Berhasil!',
+          'Tweet berhasil digenerate!',
+          'success'
+        )
+
+      } catch (err) {
+        console.log(err);
+        Swal.fire(
+          'Ups! Error!',
+          `Coba beberapa saat lagi`,
+          'error'
+        )
+      }
+    },
+
+
+    // 
+
+
+
   },
 });

@@ -38,11 +38,6 @@ const router = createRouter({
       component: TwitterPage
     },
     {
-      path: '/twitter/trends',
-      name: 'TwitterTrendsPage',
-      component: xxxxxxx
-    },
-    {
       path: '/twitter/tweet',
       name: 'TwitterTweetPage',
       component: TwitterTweetPage
@@ -96,17 +91,17 @@ const router = createRouter({
 })
 
 
-router.beforeEach((to, from, next) => {
+// router.beforeEach((to, from, next) => {
 
-  const isAuth = localStorage.getItem('access_token')
+//   const isAuth = localStorage.getItem('access_token')
 
-  if (to.name !== 'LoginPage' && !isAuth) {
-    next({ name: 'LoginPage' })
-  } else if (isAuth && to.name == 'LoginPage') {
-    next({name: 'HomePage'})
-  } else {
-    next()
-  } 
-})
+//   if (to.name !== 'LoginPage' && !isAuth) {
+//     next({ name: 'LoginPage' })
+//   } else if (isAuth && to.name == 'LoginPage') {
+//     next({name: 'HomePage'})
+//   } else {
+//     next()
+//   } 
+// })
 
 export default router
