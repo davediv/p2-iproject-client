@@ -40,6 +40,7 @@ export default {
     <RouterLink to="/username-checker" class="panel-item">Username Checker</RouterLink>
     <RouterLink to="/down-checker" class="panel-item">Down Checker</RouterLink>
     <RouterLink to="/twitter/trends" class="panel-item">Twitter Trends</RouterLink>
+    <RouterLink to="/text-to-image" class="panel-item">Text to Image</RouterLink>
 </div>
 
 
