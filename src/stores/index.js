@@ -3,6 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2'
 
 const baseUrl = 'http://localhost:3000';
+// const baseUrl = 'https://sosialai001-production.up.railway.app';
 
 export const useSosmedStore = defineStore('sosmed', {
   state: () => ({
@@ -256,17 +257,21 @@ export const useSosmedStore = defineStore('sosmed', {
 
 
     // USERNAME CHECKER
-    async postUsernameChecker(username) {
+    async postUsernameChecker(keyword) {
+
+      console.log(keyword);
 
       try {
 
         const { data } = await axios({
           url: baseUrl + '/username-checker',
           method: 'POST',
-          data: { username },
+          data: { keyword },
         });
 
-        this.result = data.result;
+        // console.log(data, '<<<< DATA');
+
+        this.result = data
 
         Swal.fire(
           'Berhasil!',
@@ -285,23 +290,24 @@ export const useSosmedStore = defineStore('sosmed', {
     },
 
     // TWITTER - DOWN CHECKER
-    async postDownChecker(keyword) {
+    async postDownChecker() {
 
       try {
 
         const { data } = await axios({
           url: baseUrl + '/down-checker',
-          method: 'POST',
-          data: { keyword },
+          method: 'GET',
         });
 
-        this.result = data.result;
+        // console.log(data);
 
-        Swal.fire(
-          'Berhasil!',
-          'Tweet berhasil digenerate!',
-          'success'
-        )
+        this.result = data
+
+        // Swal.fire(
+        //   'Berhasil!',
+        //   'Tweet berhasil digenerate!',
+        //   'success'
+        // )
 
       } catch (err) {
         console.log(err);
@@ -321,16 +327,17 @@ export const useSosmedStore = defineStore('sosmed', {
         const { data } = await axios({
           url: baseUrl + '/twitter-trends',
           method: 'GET',
-          data: { keyword },
         });
 
-        this.result = data.result;
+        this.result = data.trends;
 
-        Swal.fire(
-          'Berhasil!',
-          'Tweet berhasil digenerate!',
-          'success'
-        )
+        console.log(this.result, '<<<<<<< DATA RESULT');
+
+        // Swal.fire(
+        //   'Berhasil!',
+        //   'Tweet berhasil digenerate!',
+        //   'success'
+        // )
 
       } catch (err) {
         console.log(err);

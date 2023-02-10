@@ -19,8 +19,8 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'DallEPage',
-      component: DallEPage
+      name: 'HomePage',
+      component: HomePage
     },
     {
       path: '/login',
@@ -83,7 +83,7 @@ const router = createRouter({
       component: TwitterTrendsPage
     },
     {
-      path: '/text-to-art',
+      path: '/text-to-image',
       name: 'DallEPage',
       component: DallEPage
     },

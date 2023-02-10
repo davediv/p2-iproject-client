@@ -1,6 +1,6 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
 /* RESET */
 body {
@@ -12,11 +12,17 @@ body {
 
 
 /* CUSTOM */
+
+main {
+    width: 100wv;
+}
+
 .container {
-    display: block;
-    margin: auto;
-    padding: 1rem;
-    max-width: 720px;
+    width: 100%;
+    /* display: block; */
+    /* margin: auto; */
+    /* padding: 1rem; */
+    /* max-width: 720px; */
     margin-bottom: 150px;
 }
 
@@ -35,7 +41,7 @@ header {
 }
 
 footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     width: 100%;
     padding: .5rem;
@@ -54,6 +60,11 @@ body {
 
     background-color: #fff;
     color: #000;
+}
+
+article {
+    display: flex;
+    justify-content: center;
 }
 
 a {
@@ -103,6 +114,30 @@ button {
     justify-content: center;
     align-items: center;
     margin: 3rem auto;
+}
+
+.panel-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    /* max-width: 720px; */
+}
+
+.panel-item {
+    background-color: #1DA1F2;
+    border: 1px sloid #000;
+    border-radius: 9px;
+    padding: 2rem;
+    margin: 1rem;
+}
+
+.panel-item:hover {
+    background-color: #0f7cbf;
+}
+
+a.panel-item {
+    text-decoration: none;
 }
 
 hr {
